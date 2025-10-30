@@ -153,5 +153,18 @@
       },
       "redirectOnDeny": "/login"
     }
+  },
+  "/employer/candidates": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "User must be logged in to view candidates",
+            "rule": "authenticated"
+          }
+        ]
+      },
+      "redirectOnDeny": "/login"
+    }
   }
 }

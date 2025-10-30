@@ -19,8 +19,8 @@ const ErrorPage = lazy(() => import("@/components/pages/ErrorPage"));
 const ResetPassword = lazy(() => import("@/components/pages/ResetPassword"));
 const PromptPassword = lazy(() => import("@/components/pages/PromptPassword"));
 const PostJob = lazy(() => import("@/components/pages/PostJob"));
+const EmployerCandidates = lazy(() => import("@/components/pages/EmployerCandidates"));
 const NotFound = lazy(() => import("@/components/pages/NotFound"));
-
 // Loading fallback component
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -132,7 +132,7 @@ export const router = createBrowserRouter([
             element: <JobDetail />,
           }),
           createRoute({
-            path: "jobs/saved",
+path: "jobs/saved",
             element: <SavedJobs />,
           }),
 createRoute({
@@ -142,6 +142,10 @@ createRoute({
           createRoute({
             path: "employer/post-job",
             element: <PostJob />,
+          }),
+          createRoute({
+            path: "employer/candidates",
+            element: <EmployerCandidates />,
           }),
         ],
       },
