@@ -1,6 +1,4 @@
-import React from "react";
 import { getApperClient } from "@/services/apperClient";
-import Error from "@/components/ui/Error";
 const employerService = {
   async getAll() {
     try {
