@@ -199,9 +199,9 @@ className="p-8 bg-white/10 backdrop-blur-md border-white/20 cursor-pointer"
             Join thousands of job seekers and employers who trust TalentBridge to connect talent with opportunity.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+<Button 
               size="lg" 
-              onClick={() => navigate("/jobseeker/jobs")}
+              onClick={() => navigate("/jobs")}
               className="bg-white text-primary hover:bg-blue-50"
             >
               <ApperIcon name="Search" size={20} className="mr-2" />
