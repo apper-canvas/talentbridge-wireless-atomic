@@ -1,3 +1,6 @@
+import React from "react";
+import { getApperClient } from "@/services/apperClient";
+import Error from "@/components/ui/Error";
 const employerService = {
   async getAll() {
     try {
@@ -119,6 +122,58 @@ const employerService = {
       console.error("Error fetching profile by user ID:", error?.response?.data?.message || error);
       throw error;
     }
+},
+
+  /**
+   * Get current user's employer profile
+   */
+  getCurrentProfile: async () => {
+    try {
+      const apperClient = getApperClient();
+      if (!apperClient) {
+        throw new Error('ApperClient not initialized');
+      }
+
+      // Get current user from Redux store or session
+      const userResponse = await apperClient.fetchRecords('user_c', {
+        fields: [{"field": {"Name": "Id"}}],
+        pagingInfo: { limit: 1, offset: 0 }
+      });
+
+      if (!userResponse.success || !userResponse.data?.[0]) {
+        throw new Error('User not authenticated');
+      }
+
+      const userId = userResponse.data[0].Id;
+
+      // Fetch employer profile for current user
+      const response = await apperClient.fetchRecords('employer_profile_c', {
+        fields: [
+          {"field": {"Name": "Id"}},
+          {"field": {"Name": "company_name_c"}},
+          {"field": {"Name": "industry_c"}},
+          {"field": {"Name": "company_size_c"}},
+          {"field": {"Name": "website_c"}},
+          {"field": {"Name": "description_c"}},
+          {"field": {"Name": "user_id_c"}}
+        ],
+        where: [{
+          FieldName: "user_id_c",
+          Operator: "EqualTo",
+          Values: [userId]
+        }],
+        pagingInfo: { limit: 1, offset: 0 }
+      });
+
+      if (!response.success) {
+        throw new Error(response.message || 'Failed to fetch employer profile');
+      }
+
+      return response.data?.[0] || null;
+    } catch (error) {
+      console.error('Error in getCurrentProfile:', error);
+throw error;
+    }
   },
 
   async create(profileData) {
@@ -219,9 +274,9 @@ const employerService = {
     }
   },
 
-  async verify(id) {
+async verify(id) {
     return await this.update(id, { verified_c: true });
-  },
+  }
 };
 
 export default employerService;
