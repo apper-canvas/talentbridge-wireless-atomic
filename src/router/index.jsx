@@ -18,6 +18,7 @@ const Callback = lazy(() => import("@/components/pages/Callback"));
 const ErrorPage = lazy(() => import("@/components/pages/ErrorPage"));
 const ResetPassword = lazy(() => import("@/components/pages/ResetPassword"));
 const PromptPassword = lazy(() => import("@/components/pages/PromptPassword"));
+const PostJob = lazy(() => import("@/components/pages/PostJob"));
 const NotFound = lazy(() => import("@/components/pages/NotFound"));
 
 // Loading fallback component
@@ -134,9 +135,13 @@ export const router = createBrowserRouter([
             path: "jobs/saved",
             element: <SavedJobs />,
           }),
-          createRoute({
+createRoute({
             path: "applications",
             element: <MyApplications />,
+          }),
+          createRoute({
+            path: "employer/post-job",
+            element: <PostJob />,
           }),
         ],
       },

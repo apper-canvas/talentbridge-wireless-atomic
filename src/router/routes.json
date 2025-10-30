@@ -128,12 +128,25 @@
       "redirectOnDeny": "/login"
     }
   },
-  "/applications": {
+"/applications": {
     "allow": {
       "when": {
         "conditions": [
           {
             "label": "User must be logged in to view applications",
+            "rule": "authenticated"
+          }
+        ]
+      },
+      "redirectOnDeny": "/login"
+    }
+  },
+  "/employer/post-job": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "User must be logged in to post jobs",
             "rule": "authenticated"
           }
         ]
