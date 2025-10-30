@@ -131,11 +131,11 @@ export const router = createBrowserRouter([
             path: "jobseeker/jobs/:id",
             element: <JobDetail />,
           }),
-          createRoute({
-path: "jobs/saved",
+createRoute({
+            path: "jobs/saved",
             element: <SavedJobs />,
           }),
-createRoute({
+          createRoute({
             path: "applications",
             element: <MyApplications />,
           }),
