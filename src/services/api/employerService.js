@@ -135,7 +135,8 @@ const employerService = {
 // RLS policies automatically filter to current user's profile
       // No need to manually check authentication - ApperClient handles this via cookies
 
-      // Fetch employer profile for current user
+// Fetch employer profile for current user
+      // RLS policies automatically filter to current user's profile
       const response = await apperClient.fetchRecords('employer_profile_c', {
         fields: [
           {"field": {"Name": "Id"}},
@@ -146,11 +147,6 @@ const employerService = {
           {"field": {"Name": "description_c"}},
           {"field": {"Name": "user_id_c"}}
         ],
-        where: [{
-          FieldName: "user_id_c",
-          Operator: "EqualTo",
-          Values: [userId]
-        }],
         pagingInfo: { limit: 1, offset: 0 }
       });
 
