@@ -132,17 +132,8 @@ const employerService = {
         throw new Error('ApperClient not initialized');
       }
 
-      // Get current user from Redux store or session
-      const userResponse = await apperClient.fetchRecords('user_c', {
-        fields: [{"field": {"Name": "Id"}}],
-        pagingInfo: { limit: 1, offset: 0 }
-      });
-
-      if (!userResponse.success || !userResponse.data?.[0]) {
-        throw new Error('User not authenticated');
-      }
-
-      const userId = userResponse.data[0].Id;
+// RLS policies automatically filter to current user's profile
+      // No need to manually check authentication - ApperClient handles this via cookies
 
       // Fetch employer profile for current user
       const response = await apperClient.fetchRecords('employer_profile_c', {
