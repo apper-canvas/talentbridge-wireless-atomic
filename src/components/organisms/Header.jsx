@@ -1,15 +1,15 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
 import RoleIndicator from "@/components/molecules/RoleIndicator";
-import { AuthContext } from "@/App";
+import { useAuth } from "@/layouts/Root";
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { logout } = useContext(AuthContext);
+const { logout } = useAuth();
 
   // Mock current user - in production, this would come from auth context
   const currentUser = {

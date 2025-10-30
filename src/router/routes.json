@@ -1,0 +1,144 @@
+{
+  "/": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Homepage is public",
+            "rule": "public"
+          }
+        ]
+      }
+    }
+  },
+  "/login": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Login page is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  },
+  "/signup": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Signup page is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  },
+  "/callback": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Callback page is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  },
+  "/error": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Error page is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  },
+  "/prompt-password/:appId/:emailAddress/:provider": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Prompt password page is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  },
+  "/reset-password/:appId/:fields": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "Reset password page is public",
+            "rule": "public"
+          }
+        ]
+      },
+      "excludeRedirectQuery": true
+    }
+  },
+  "/jobs": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "User must be logged in to view jobs",
+            "rule": "authenticated"
+          }
+        ]
+      },
+      "redirectOnDeny": "/login"
+    }
+  },
+  "/jobseeker/jobs/:id": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "User must be logged in to view job details",
+            "rule": "authenticated"
+          }
+        ]
+      },
+      "redirectOnDeny": "/login"
+    }
+  },
+  "/jobs/saved": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "User must be logged in to view saved jobs",
+            "rule": "authenticated"
+          }
+        ]
+      },
+      "redirectOnDeny": "/login"
+    }
+  },
+  "/applications": {
+    "allow": {
+      "when": {
+        "conditions": [
+          {
+            "label": "User must be logged in to view applications",
+            "rule": "authenticated"
+          }
+        ]
+      },
+      "redirectOnDeny": "/login"
+    }
+  }
+}
